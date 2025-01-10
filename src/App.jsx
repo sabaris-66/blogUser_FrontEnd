@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
+import "./App.css";
 
 const getBlogs = async (url) => {
   const response = await fetch(url, {
@@ -47,19 +48,21 @@ const App = () => {
   //   fetchBlogData();
   // }, []);
   return (
-    <>
+    <div className="content">
       <h1>Saba's Blog Page</h1>
-      <div>Welcome Everyone!</div>
-
+      <h2>Welcome Everyone!</h2>
+      <h2>Posts</h2>
       {data &&
         data.posts.map((post) => {
           return (
-            <li key={post.title}>
-              <Link to={`/blog/${post.id}`}>{post.title}</Link>
-            </li>
+            <div key={post.title}>
+              <Link className="linker" to={`/blog/${post.id}`}>
+                {post.title}
+              </Link>
+            </div>
           );
         })}
-    </>
+    </div>
   );
 };
 
