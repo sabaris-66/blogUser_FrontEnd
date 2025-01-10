@@ -12,7 +12,7 @@ const SingleBlog = () => {
   useEffect(() => {
     const getPostWithComments = async () => {
       const response = await fetch(
-        `http://localhost:3000/api/posts/${postId}`,
+        `https://blogapi-production-17ab.up.railway.app/api/posts/${postId}`,
         { mode: "cors" }
       );
       const postWithComments = await response.json();
@@ -29,14 +29,17 @@ const SingleBlog = () => {
     event.preventDefault();
     const comment = commentRef.current.value;
     console.log(comment);
-    await fetch(`http://localhost:3000/api/posts/${postId}/comment`, {
-      method: "POST",
-      mode: "cors",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ comment }),
-    });
+    await fetch(
+      `https://blogapi-production-17ab.up.railway.app/api/posts/${postId}/comment`,
+      {
+        method: "POST",
+        mode: "cors",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ comment }),
+      }
+    );
     commentFormRef.current.reset();
     setNewCommentCount((prev) => prev + 1);
   };

@@ -19,9 +19,12 @@ const App = () => {
 
   useEffect(() => {
     const blogPosts = async () => {
-      const result = await fetch("http://localhost:3000/api/posts", {
-        mode: "cors",
-      });
+      const result = await fetch(
+        "https://blogapi-production-17ab.up.railway.app/api/posts",
+        {
+          mode: "cors",
+        }
+      );
       const allPosts = await result.json();
       console.log(allPosts);
       setData(allPosts);
