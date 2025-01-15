@@ -55,6 +55,9 @@ const App = () => {
       <h1>Saba's Blog Page</h1>
       <h2>Welcome Everyone!</h2>
       <h2>Posts</h2>
+      {!data && (
+        <div> If no Posts appear, Please Refresh this page, Server Problem</div>
+      )}
       {data &&
         data.posts.map((post) => {
           return (
